@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { userSignIn } from "../Store/Actions/UserAction";
-import Header from '../Header/Header'
-import './Login.css'
+import "./Login.css";
 
 const Login = () => {
   const [userCredentials, setUserCredentials] = useState({
@@ -45,41 +44,46 @@ const Login = () => {
     navigate("/");
   };
   return (
-      <>
-    <Header />
-    <div className="logincontainer">
-      <div className="container">
-        <div className="loginheading">Login</div>
-        <div className="logindescription">Get access to your orders, Whishlist and Recommendations</div>
-      </div>
-      <div className="loginform">
-        <form onSubmit={handleSubmit}>
-        <div className="emailBox">
-        <label>Email</label>
-        <input
-            type='email'
-            name='email'
-            id='email'
-            value={userCredentials.email}
-            onChange={handleChange}
-            required
-          />
+    <>
+      <div className="logincontainer">
+        <div className="container">
+          <div className="loginheading">Login</div>
+          <div className="logindescription">
+            Get access to your orders, Whishlist and Recommendations
           </div>
-          <div className="emailBox">
-          Password
-          <input type='password'
-            name='password'
-            id='password'
-            value={userCredentials.password}
-            onChange={handleChange}
-            required />
-          </div>
-          <button type="submit" className="loginbutton">Login</button>
-        </form>
+        </div>
+        <div className="loginform">
+          <form onSubmit={handleSubmit}>
+            <div className="emailBox">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={userCredentials.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="emailBox">
+              Password
+              <input
+                type="password"
+                name="password"
+                id="password"
+                value={userCredentials.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit" className="loginbutton">
+              Login
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 };
 
-export default Login
+export default Login;

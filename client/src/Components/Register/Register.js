@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Header from '../Header/Header'
-import './Register.css'
+import "./Register.css";
 
 const Register = () => {
   const initialFormData = {
@@ -18,7 +17,7 @@ const Register = () => {
     const { name, value } = event.target;
     setUserCredentials({ ...userCredentials, [name]: value });
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const { firstName, lastName, email, password, confirmPassword } =
@@ -45,79 +44,85 @@ const Register = () => {
       JSON.stringify({ firstName, lastName, email, password })
     );
     setSuccessMessage("User successfully registed, Now SignIn");
-
   };
   return (
-      <>
-    <Header />
-    <div className="registercontainer">
-      <div className="container">
-        <div className="registerheading">Signup</div>
-        <div className="registerdescription">we do not share personal details with anyone</div>
+    <>
+      <div className="registercontainer">
+        <div className="container">
+          <div className="registerheading">Signup</div>
+          <div className="registerdescription">
+            we do not share personal details with anyone
+          </div>
+        </div>
+        <div className="registerform">
+          <form onSubmit={handleSubmit}>
+            <div className="emailBox">
+              <label>Firstname</label>
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                value={userCredentials.firstName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="emailBox">
+              <label>Lastname</label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                value={userCredentials.lastName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="emailBox">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={userCredentials.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="emailBox">
+              Password
+              <input
+                type="password"
+                name="password"
+                id="password"
+                value={userCredentials.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="emailBox">
+              Confirm Password
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                value={userCredentials.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {errorMessage && <div className="signup-error">{errorMessage}</div>}
+            {successMessage && (
+              <div className="signup-success">{successMessage}</div>
+            )}
+            <button type="submit" className="registerbutton">
+              Signup
+            </button>
+          </form>
+        </div>
       </div>
-      <div className="registerform">
-        <form onSubmit={handleSubmit}>
-        <div className="emailBox">
-        <label>Firstname</label>
-        <input
-            type='text'
-            name='firstName'
-            id='firstName'
-            value={userCredentials.firstName}
-            onChange={handleChange}
-            required
-          />
-          </div>
-          <div className="emailBox">
-        <label>Lastname</label>
-        <input
-           type='text'
-           name='lastName'
-           id='lastName'
-           value={userCredentials.lastName}
-           onChange={handleChange}
-            required
-          />
-          </div>
-        <div className="emailBox">
-        <label>Email</label>
-        <input
-            type='email'
-            name='email'
-            id='email'
-            value={userCredentials.email}
-            onChange={handleChange}
-            required
-          />
-          </div>
-          <div className="emailBox">
-          Password
-          <input type='password'
-            name='password'
-            id='password'
-            value={userCredentials.password}
-            onChange={handleChange}
-            required/>
-          </div>
-          <div className="emailBox">
-          Confirm Password
-          <input type='password'
-            name='confirmPassword'
-            id='confirmPassword'
-            value={userCredentials.confirmPassword}
-            onChange={handleChange}
-            required />
-          </div>
-          {errorMessage && <div className='signup-error'>{errorMessage}</div>}
-          {successMessage && (
-            <div className='signup-success'>{successMessage}</div>
-          )}
-          <button type="submit" className="registerbutton">Signup</button>
-        </form>
-      </div>
-    </div>
     </>
   );
 };
 
-export default Register
+export default Register;
